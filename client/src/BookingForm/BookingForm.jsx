@@ -18,7 +18,7 @@ const BookingForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://restaurent-booking.onrender.com/book', formData, {
+      const response = await axios.post('https://yuva-res.onrender.com/book', formData, {
         headers: { 'Content-Type': 'application/json' }
       });
 

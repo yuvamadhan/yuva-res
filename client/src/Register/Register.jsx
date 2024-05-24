@@ -20,7 +20,7 @@ const Register = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:8000/register", values);
+      const res = await axios.post("https://yuva-res.onrender.com/register", values);
       console.log(res.data);
       alert('Registration successful');
       navigate('/login');

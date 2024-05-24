@@ -18,7 +18,7 @@ const navi= useNavigate()
 
   function handleSubmit(e) {
     e.preventDefault();
-    axios.post("http://localhost:8000/login", values)
+    axios.post("https://yuva-res.onrender.com/login", values)
       .then((res) => {
         console.log(res.data);
         alert('login sucessful');

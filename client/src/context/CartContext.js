@@ -13,7 +13,7 @@ export const CartProvider = ({ children }) => {
 
   const fetchCart = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/cart');
+      const response = await axios.get('https://yuva-res.onrender.com/cart');
       setCart(response.data);
     } catch (error) {
       console.error('Error fetching cart items:', error);
@@ -22,7 +22,7 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = async (item) => {
     try {
-      const response = await axios.post('http://localhost:8000/cart', {
+      const response = await axios.post('https://yuva-res.onrender.com/cart', {
         item_name: item.name,
         quantity: item.count,
         price: parseFloat(item.price.replace('Rs.', '')),
@@ -36,7 +36,7 @@ export const CartProvider = ({ children }) => {
 
   const removeFromCart = async (id) => {
     try {
-      await axios.delete(`http://localhost:8000/cart/${id}`);
+      await axios.delete(`https://yuva-res.onrender.com/cart/${id}`);
       setCart(cart.filter((item) => item.id !== id));
     } catch (error) {
       console.error('Error removing item from cart:', error);
