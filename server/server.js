@@ -17,7 +17,7 @@ const pool = new Pool({
 
 
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'client/build')));
+// app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(cors());
 
 // Login endpoint
@@ -123,9 +123,9 @@ app.delete('/cart/:id', async (req, res) => {
   }
 });
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/client/build/index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname + '/client/build/index.html'));
+// });
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
