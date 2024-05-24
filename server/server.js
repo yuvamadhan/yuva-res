@@ -8,10 +8,10 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 
 const pool = new Pool({
-  user: 'ukwrqzev4tb4qmsvjsgl',
-  host: 'bqrgkc6r4ysqgsspyobw-postgresql.services.clever-cloud.com',
-  password: 'bW5OBN2lMH22UWXynf6S76gAGW9XFe',
-  database: 'bqrgkc6r4ysqgsspyobw',
+  user: 'uonijdmh9p45aknnawyv',
+  host: 'bfqmdez0scyr7lxs8ps5-postgresql.services.clever-cloud.com',
+  password: 'YC5ryOsie3IXWKNHcviu4ygbhakXBx',
+  database: 'bfqmdez0scyr7lxs8ps5',
   port: 50013,
 });
 
