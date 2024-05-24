@@ -20,6 +20,9 @@ app.use(bodyParser.json());
 // app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(cors());
 
+app.get("/",async(req,res)=>{
+  return res.json("SAnju cheta");
+})
 // Login endpoint
 app.post('/login', async (req, res) => {
   try {
