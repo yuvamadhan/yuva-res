@@ -1,40 +1,65 @@
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 40px;
+}
 
+.booking-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 300px;
+  background-color: rgba(231, 147, 147, 0.6);
+}
+
+.booking-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+}
+
+.booking-form input {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.booking-form button {
+  padding: 10px;
+  border: none;
+  background-color: #f1a9d6;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
   .booking-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    margin-bottom: 40px;
-  }
-  
-  .booking-form form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 300px;
-    background-color: rgba(231, 147, 147, 0.6); 
-  }
-  
-  .booking-form label {
-    display: flex;
-    flex-direction: column;
-    font-size: 20px;
-  }
-  
-  .booking-form input {
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .booking-form button {
     padding: 10px;
-    border: none;
-    background-color:#f1a9d6;
-    color: white;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
   }
-  
+
+  .booking-form form {
+    max-width: 100%;
+    gap: 8px;
+  }
+
+  .booking-form label {
+    font-size: 18px;
+  }
+
+  .booking-form input {
+    font-size: 14px;
+    padding: 6px;
+  }
+
+  .booking-form button {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
