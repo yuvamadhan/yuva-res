@@ -28,7 +28,7 @@ const foodItems = [
 ];
 
 const Menu = () => {
-  const { addToCart, cart,updateCartQuantity, disabledItems } = useContext(CartContext);
+  const { addToCart, cart, disabledItems, updateCartQuantity } = useContext(CartContext);
   const [counts, setCounts] = useState(new Array(foodItems.length).fill(0));
   const navigate = useNavigate();
 

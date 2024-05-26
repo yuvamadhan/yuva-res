@@ -28,9 +28,8 @@ const foodItems = [
 ];
 
 const Admin = () => {
-  const { addToCart } = useContext(CartContext);
+  const { toggleItemEnabled, disabledItems } = useContext(CartContext);
   const [counts, setCounts] = useState(new Array(foodItems.length).fill(0));
-  const [enabled, setEnabled] = useState(new Array(foodItems.length).fill(true));
   const navigate = useNavigate();
 
   const incrementCount = (index) => {
@@ -48,17 +47,11 @@ const Admin = () => {
   };
 
   const handleAddToCart = (index) => {
-    if (counts[index] > 0 && enabled[index]) {
+    if (counts[index] > 0 && !disabledItems.includes(foodItems[index].name)) {
       const item = { ...foodItems[index], count: counts[index] };
       addToCart(item);
       setCounts(new Array(foodItems.length).fill(0)); // Reset counts
     }
-  };
-
-  const toggleEnabled = (index) => {
-    const newEnabled = [...enabled];
-    newEnabled[index] = !newEnabled[index];
-    setEnabled(newEnabled);
   };
 
   const handleViewCart = () => {
@@ -67,7 +60,9 @@ const Admin = () => {
 
   return (
     <div className="food-list">
-      <button className="view-cart-button" onClick={handleViewCart}>View Cart</button>
+      <button className="view-cart-button" onClick={handleViewCart}>
+        View Cart
+      </button>
       <div className="foods-container">
         {foodItems.map((food, index) => (
           <div key={index} className="food-box">
@@ -80,13 +75,9 @@ const Admin = () => {
                 <span>{counts[index]}</span>
                 <button onClick={() => incrementCount(index)}>+</button>
               </div>
-              <button onClick={() => toggleEnabled(index)}>
-                {enabled[index] ? 'Disable' : 'Enable'}
+              <button onClick={() => toggleItemEnabled(food.name)}>
+                {disabledItems.includes(food.name) ? 'Enable' : 'Disable'}
               </button>
-              {/* Show "Add to Cart" button only if the item is enabled */}
-              {enabled[index] && (
-                <button onClick={() => handleAddToCart(index)}>Add to Cart</button>
-              )}
             </div>
           </div>
         ))}

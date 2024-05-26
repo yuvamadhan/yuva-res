@@ -5,11 +5,18 @@ export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
-  const [disabledItems, setDisabledItems] = useState([]);
+  const [disabledItems, setDisabledItems] = useState(() => {
+    const saved = localStorage.getItem('disabledItems');
+    return saved ? JSON.parse(saved) : [];
+  });
 
   useEffect(() => {
     fetchCart();
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('disabledItems', JSON.stringify(disabledItems));
+  }, [disabledItems]);
 
   const fetchCart = async () => {
     try {
@@ -43,6 +50,17 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  const updateCartQuantity = async (id, newQuantity) => {
+    try {
+      const response = await axios.put(`https://yuva-res.onrender.com/cart/${id}`, {
+        quantity: newQuantity,
+      });
+      setCart(cart.map((item) => (item.id === id ? response.data : item)));
+    } catch (error) {
+      console.error('Error updating cart quantity:', error);
+    }
+  };
+
   const toggleItemEnabled = (itemName) => {
     setDisabledItems((prevDisabledItems) => {
       if (prevDisabledItems.includes(itemName)) {
@@ -55,7 +73,7 @@ export const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, disabledItems, toggleItemEnabled }}
+      value={{ cart, addToCart, removeFromCart, updateCartQuantity, disabledItems, toggleItemEnabled }}
     >
       {children}
     </CartContext.Provider>
